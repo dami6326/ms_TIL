@@ -1,0 +1,24 @@
+package step1;
+
+import role.Role;
+import java.util.*;
+
+public class Service {
+    private Repository repo = new Repository();
+
+    public boolean register(Role member) {
+        if (repo.isDuplicate(member.getName())) {
+            return false;
+        }
+        repo.save(member);
+        return true;
+    }
+
+    public List<Role> getAll() {
+        return repo.findAll();
+    }
+
+    public Role search(String name) {
+        return repo.findByName(name);
+    }
+}
